@@ -3,7 +3,7 @@ Python implementation of a cyber-physical security experiment against a simulate
 
 The project implements a stealthy false data injection attack against OPC UA pressure setpoints, collects process data, and evaluates detection methods against normal, noisy attack, and stealthy attack behaviour.
 
-Developed for an authorised academic lab environment. Do not run the attack scripts against real industrial control systems, production OPC UA servers, or systems without explicit permission.
+Developed and tested in an authorised laboratory environment using a simulated industrial control system. Do not run the attack scripts against real industrial control systems, production OPC UA servers, or systems without explicit permission.
 
 ## Project Summary
 The simulated attack targets two steam generator pressure setpoints:
@@ -47,7 +47,7 @@ The attack and polling scripts assume access to the simulated OPC UA server:
 ```text
 opc.tcp://10.2.1.10:53530/
 ```
-This endpoint is hard-coded in `polling.py`, `attack.py`, and `noisy.py`. Update those files if the lab endpoint changes.
+This endpoint is the default in `polling.py`, `attack.py`, and `noisy.py`. Update the endpoint in the scripts if your simulation uses a different address.
 
 ## Installation
 Create and activate a virtual environment:
@@ -58,9 +58,7 @@ source .venv/bin/activate
 Install dependencies:
 ```bash
 pip install -r requirements.txt
-pip install asyncua
 ```
-`asyncua` is required by the OPC UA scripts but is not currently listed in `requirements.txt`.
 
 ## Data Collection
 `polling.py` collects values from the OPC UA server and writes them to a CSV file.
@@ -146,8 +144,6 @@ Detection is less reliable during transition periods where normal plant behaviou
 - Scripts are manually coordinated rather than run as one pipeline.
 - Detection is offline from CSV files, not live-streamed.
 - Transition-state baselines reduce detector reliability.
-## Academic Context
-This repository supports a cyber-physical systems security assessment focused on stealthy attack generation and anomaly detection in simulated industrial control environments.
 
 ## Usage Notice
 This repository is provided for portfolio and review purposes only.
