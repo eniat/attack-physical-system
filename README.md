@@ -52,18 +52,20 @@ opc.tcp://10.2.1.10:53530/
 This endpoint is the default in `polling.py`, `attack.py`, and `noisy.py`. Update the endpoint in the scripts if your simulation uses a different address.
 
 ## Installation
-All commands in this README are run from the code/ directory.
+All commands in this README are run from the `code/` directory:
+```bash
+cd code
+```
 
 Create and activate a virtual environment:
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
+python -m venv .venv
+source .venv/Scripts/activate   # Windows (Git Bash)
+source .venv/bin/activate       # macOS and Linux
 ```
+
 Install dependencies:
 ```bash
-cd code
-python -m venv .venv
-source .venv/Scripts/activate
 pip install -r requirements.txt
 ```
 
@@ -86,6 +88,7 @@ Start polling with:
 python polling.py
 ```
 Stop the script manually when enough data has been collected.
+Polling produces one file per run. Concatenate or rename your baseline runs to normal_all.csv and your attack runs to attack_all.csv before running the detectors.
 
 ## Running the Attacks
 Run the stealthy drift and masking attack:
